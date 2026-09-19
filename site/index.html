@@ -1,0 +1,68 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InBody Auditor — Live Proof</title>
+<style>
+:root{color-scheme:dark}
+body{background:#0b0d10;color:#e6e9ef;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0;padding:32px;max-width:760px}
+h1{font-size:22px;margin:0 0 4px;font-weight:600}
+.sub{color:#8b93a1;margin-bottom:8px}
+.story{color:#c8cfd9;margin:0 0 24px}
+.stats{display:flex;gap:28px;margin-bottom:24px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:600}
+.stat span{color:#8b93a1;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+canvas{width:100%;height:260px;background:#11141a;border:1px solid #232833;border-radius:8px;margin-bottom:24px}
+h2{font-size:15px;margin:28px 0 12px;color:#e6e9ef}
+.steps{display:grid;gap:8px;margin-bottom:8px}
+.step{border:1px solid #232833;background:#11141a;border-radius:8px;padding:12px}
+.step b{color:#5ee89b}
+.sponsors{display:grid;gap:8px;margin-bottom:8px}
+.sp{border:1px solid #232833;background:#11141a;border-radius:8px;padding:12px}
+.sp b{color:#ffd479}
+.coach{border:1px solid #1d6b40;background:#0f3d24;color:#5ee89b;border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.nav a{color:#0b0d10;background:#5ee89b;border-radius:6px;padding:10px 16px;text-decoration:none;font-weight:600}
+.nav a.ghost{background:transparent;color:#5ee89b;border:1px solid #1d6b40}
+.meta{color:#6b7280;font-size:12px;margin-top:16px}
+.meta a{color:#8b93a1}
+footer{margin-top:28px;color:#6b7280;font-size:12px;border-top:1px solid #232833;padding-top:16px}
+</style>
+<h1>InBody Auditor</h1>
+<div class="sub">105.8 kg &rarr; 98.7 kg &middot; Daytona HackSprint Seoul 2026-09-19</div>
+<p class="story">One lifter, one story asset: 7.1 kg down, muscle held, proof published — not another dead tracker.</p>
+<div class="stats">
+<div class="stat"><b>7.1 kg</b><span>lost (105.8&rarr;98.7)</span></div>
+<div class="stat"><b>+0.3 kg</b><span>muscle held, fat -3.1 pts</span></div>
+<div class="stat"><b>197 g</b><span>protein floor / day</span></div>
+</div>
+<canvas id="c" width="700" height="260"></canvas>
+<script>
+var DATA=[{d:"2026-07-01",w:105.8},{d:"2026-08-01",w:102.4},{d:"2026-09-01",w:99.1},{d:"2026-09-19",w:98.7}];
+(function(){var c=document.getElementById("c"),x=c.getContext("2d");var W=c.width,H=c.height,pad=36;
+var ws=DATA.map(function(r){return r.w});var lo=Math.min.apply(null,ws)-1,hi=Math.max.apply(null,ws)+1;
+function px(i){return pad+i*(W-2*pad)/Math.max(1,DATA.length-1)}function py(w){return H-pad-(w-lo)/(hi-lo)*(H-2*pad)}
+x.strokeStyle="#232833";x.fillStyle="#6b7280";x.font="11px monospace";
+for(var g=0;g<=4;g++){var v=lo+(hi-lo)*g/4,y=py(v);x.beginPath();x.moveTo(pad,y);x.lineTo(W-pad,y);x.stroke();x.fillText(v.toFixed(1),4,y+4)}
+x.strokeStyle="#5ee89b";x.lineWidth=2;x.beginPath();DATA.forEach(function(r,i){i?x.lineTo(px(i),py(r.w)):x.moveTo(px(i),py(r.w))});x.stroke();
+x.fillStyle="#e6e9ef";DATA.forEach(function(r,i){x.beginPath();x.arc(px(i),py(r.w),3,0,7);x.fill();x.fillText(r.d.slice(5),px(i)-12,H-12)})})();
+</script>
+<div class="coach">Nosana coach [qwen/qwen3.8-27b] &mdash; Strong drop. Keep protein at 197g, lift heavy, and stay consistent.</div>
+<h2>How it works</h2>
+<div class="steps">
+<div class="step"><b>1. Daytona sandbox compute.</b> Fresh sandbox per run, signed preview URL, wait-True teardown, 10 vCPU tier cap.</div>
+<div class="step"><b>2. Nosana coach.</b> Model qwen/qwen3.8-27b writes one plain line from real deltas — no generic advice.</div>
+<div class="step"><b>3. DNSimple publish proof.</b> Prod live record 84669063 in zone auditor-demo.test, account 178711.</div>
+</div>
+<h2>Sponsors in the loop</h2>
+<div class="sponsors">
+<div class="sp"><b>Daytona</b> — every number above was computed in a fresh sandbox, previewed on a signed URL, torn down on completion.</div>
+<div class="sp"><b>Nosana</b> — coach line generated on decentralized GPU via qwen/qwen3.8-27b, pinned to the 197 g floor.</div>
+<div class="sp"><b>DNSimple</b> — this result is published proof: live record 84669063 in auditor-demo.test.</div>
+</div>
+<div class="nav">
+<a href="report.html">View report</a>
+<a class="ghost" href="deck.html">View deck</a>
+<a class="ghost" href="https://github.com/TyposBro/inbody-auditor">Repo</a>
+</div>
+<div class="meta">Built for Daytona HackSprint Seoul 2026-09-19 &middot; Repo: <a href="https://github.com/TyposBro/inbody-auditor">TyposBro/inbody-auditor</a> &middot; Raw data: <a href="report.html">report.html</a>, <a href="deck.html">deck.html</a></div>
+<footer>Free core, no subscription: this page is the story. The chart is yours to share.</footer>

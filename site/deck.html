@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InBody Auditor — Deck</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{background:#0b0d10;color:#e6e9ef;font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px}
+.slide{display:none;max-width:680px;width:100%;border:1px solid #232833;background:#11141a;border-radius:12px;padding:40px}
+.slide.on{display:block}
+.k{color:#8b93a1;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+h1{font-size:24px;margin:0 0 8px}
+h2{font-size:20px;margin:0 0 8px}
+p{color:#c8cfd9;margin:8px 0}
+.big{font-size:30px;font-weight:600;color:#5ee89b;margin:12px 0}
+.boxes{display:grid;gap:8px;margin-top:12px}
+.box{border:1px solid #232833;border-radius:8px;padding:10px 12px;background:#0b0d10}
+.box b{color:#ffd479}
+ul{margin:8px 0;padding-left:18px;color:#c8cfd9}
+.nav{margin-top:20px;color:#6b7280;font-size:12px;display:flex;gap:16px;align-items:center}
+.nav a{color:#5ee89b;text-decoration:none;border:1px solid #1d6b40;border-radius:6px;padding:6px 12px}
+#n{color:#8b93a1}
+@media print{body{display:block;padding:0;background:#fff;color:#000}.slide{display:block;border:1px solid #999;background:#fff;color:#000;margin:0 0 16px;max-width:100%}.slide p,.slide ul{color:#000}.nav{display:none}}
+</style>
+<div class="slide on" id="s1"><div class="k">1/8 — Title</div><h1>InBody Auditor</h1><p>105.8 &rarr; 98.7 kg. Muscle held. Proof published.</p><p>Free core, no subscription — the chart is the product.</p></div>
+<div class="slide" id="s2"><div class="k">2/8 — Problem</div><h2>17 dead muscle apps</h2><p>Store search rewards undifferentiated trackers; every muscle-positioned GLP-1 app sits at 0–8 ratings with identical copy.</p><p>Users don't need another tracker. They need one believable story with numbers.</p></div>
+<div class="slide" id="s3"><div class="k">3/8 — Story asset</div><h2>One lifter, one chart</h2><div class="big">7.1 kg down &middot; +0.3 kg muscle</div><p>105.8 → 102.4 → 99.1 → 98.7. Fat -3.1 pts. Protein floor 197 g/day.</p><p>Coach: Strong drop. Keep protein at 197g, lift heavy, and stay consistent.</p></div>
+<div class="slide" id="s4"><div class="k">4/8 — Architecture</div><h2>Three boxes, no servers</h2><div class="boxes"><div class="box"><b>Daytona</b> — fresh sandbox per run, signed preview URL, wait-True teardown.</div><div class="box"><b>Nosana</b> — qwen/qwen3.8-27b coach on decentralized GPU.</div><div class="box"><b>DNSimple</b> — record 84669063 in auditor-demo.test as publish proof.</div></div></div>
+<div class="slide" id="s5"><div class="k">5/8 — Live numbers</div><h2>Verified, not mocked</h2><ul><li>105.8 → 98.7 kg, delta -7.1</li><li>Muscle +0.3 kg held, fat -3.1 pts</li><li>Protein floor 197 g/day</li><li>DNSimple prod record 84669063, account 178711</li></ul></div>
+<div class="slide" id="s6"><div class="k">6/8 — Three traps fixed</div><h2>Traps we refused</h2><ul><li>No mock data — every number recomputed from CSV in sandbox.</li><li>No generic coach — one line pinned to the 197 g floor.</li><li>No localhost demo — live DNS record as the receipt.</li></ul></div>
+<div class="slide" id="s7"><div class="k">7/8 — Sponsors</div><h2>Each sponsor does real work</h2><ul><li>Daytona: compute + preview + teardown (10 vCPU tier cap).</li><li>Nosana: decentralized coach inference.</li><li>DNSimple: public proof of publish.</li></ul></div>
+<div class="slide" id="s8"><div class="k">8/8 — Ask</div><h2>Try your own scan</h2><p>Free core, no subscription. Bring a CSV, get a chart and one honest line.</p><p>Repo: TyposBro/inbody-auditor — Daytona HackSprint Seoul 2026-09-19.</p></div>
+<div class="nav"><a href="index.html">Index</a><span id="n">1 / 8 — click or ← →</span><a href="report.html">Report</a></div>
+<script>
+var i=0,S=document.querySelectorAll(".slide"),N=document.getElementById("n");
+function show(k){i=(k+S.length)%S.length;for(var j=0;j<S.length;j++)S[j].className="slide"+(j===i?" on":"");N.textContent=(i+1)+" / "+S.length+" — click or \u2190 \u2192"}
+document.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key===" ")show(i+1);if(e.key==="ArrowLeft")show(i-1)});
+document.addEventListener("click",function(e){if(e.target.tagName!=="A")show(i+1)});
+show(0);
+</script>
