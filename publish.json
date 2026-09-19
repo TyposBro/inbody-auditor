@@ -1,0 +1,13 @@
+{
+  "mode": "live",
+  "sandbox": false,
+  "base": "https://api.dnsimple.com/v2",
+  "zone": "auditor-demo.test",
+  "record_name": "inbody-20260919",
+  "record_type": "TXT",
+  "content": "0bdc1a40",
+  "hash": "0bdc1a40",
+  "account_id": 178711,
+  "record_id": 84669063,
+  "status": 201
+}
