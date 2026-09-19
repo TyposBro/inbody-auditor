@@ -1,0 +1,33 @@
+{
+  "start_weight": 105.8,
+  "now_weight": 98.7,
+  "delta_kg": -7.1,
+  "muscle_delta": 0.3,
+  "fat_pct_delta": -3.1,
+  "protein_floor_g": 197,
+  "verdicts": [
+    "Down 7.1 kg total (105.8 to 98.7)",
+    "Muscle held (+0.3 kg), fat -3.1 pts",
+    "Protein floor 197 g/day at 98.7 kg"
+  ],
+  "chart_points": [
+    {
+      "date": "2026-07-01",
+      "weight": 105.8
+    },
+    {
+      "date": "2026-08-01",
+      "weight": 102.4
+    },
+    {
+      "date": "2026-09-01",
+      "weight": 99.1
+    },
+    {
+      "date": "2026-09-19",
+      "weight": 98.7
+    }
+  ],
+  "coach_line": "Strong drop. Keep protein at 197g, lift heavy, and stay consistent.",
+  "coach_model": "qwen/qwen3.8-27b"
+}
